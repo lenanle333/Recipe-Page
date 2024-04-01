@@ -1,0 +1,64 @@
+@use "sass:math";
+@function rem($px) {
+	@return math.div($px, 16) + rem;
+}
+
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+@mixin flex-h-center {
+	display: flex;
+	align-items: center;
+}
+@mixin flex-v-center {
+	display: flex;
+	justify-content: center;
+}
+
+@mixin desktop {
+	@media (min-width: 1440px) {
+		@content;
+	}
+}
+@mixin text-base {
+	font-family: Outfit, sans;
+	color: $secondary-200;
+	font-size: rem(16);
+	font-weight: 400;
+	line-height: 150%;
+}
+@mixin unordered-lists {
+	ul {
+		margin: rem(16) 0 0 rem(5);
+		padding-right: rem(15);
+		li {
+			position: relative;
+			list-style: none;
+			@include text-base();
+			margin: rem(8) 0;
+			padding-left: rem(28);
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(0, -50%);
+				display: block;
+				content: "";
+				height: rem(4);
+				width: rem(4);
+				border-radius: 50%;
+				background-color: $primary-100;
+			}
+		}
+	}
+}
+@mixin primary-header {
+	h1 {
+		color: $primary-200;
+		font-size: rem(28);
+		margin-bottom: rem(24);
+	}
+}
